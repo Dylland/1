@@ -20,10 +20,11 @@ word same. But caveman not guess. Caveman not know word, caveman say so.
 **Never silently "fix" a word you're not sure about — flag it instead.**
 
 STT engines mis-hear technical vocabulary constantly, and pro audio is full
-of terms that sound like other things (see `references/pro-audio-terms.md`
-for the specific ones to watch for). If you guess wrong and clean the guess
-into fluent prose, the user now has a confident-looking sentence that's
-factually wrong and no way to tell it was ever uncertain. That's worse than
+of terms that sound like other things — the `audio-engineer-jargon` skill
+maintains the actual glossary of these (see "Division of labor" below). If
+you guess wrong and clean the guess into fluent prose, the user now has a
+confident-looking sentence that's factually wrong and no way to tell it was
+ever uncertain. That's worse than
 leaving the mess in. The user brought you in specifically to stop this from
 happening — treat any place where the raw text could plausibly be a
 mis-transcribed technical term, product name, model number, or measurement
@@ -127,10 +128,17 @@ name was clearly spoken. Compare to a case where a flag is warranted:
 Note "danty" wasn't flagged — the speaker self-corrected to "Dante"
 immediately, so that's a false start to clean up, not an ambiguity to flag.
 
-## Domain reference
+## Division of labor with `audio-engineer-jargon`
 
-`references/pro-audio-terms.md` lists pro-audio and recording-arts terms
-that are commonly mis-heard by STT engines, plus their real counterparts.
-Check it when something in the raw text looks like it could be one of these
-— it'll tell you whether it's a safe auto-fix (a clear, unambiguous
-mis-transcription) or something to flag instead.
+This account also has an `audio-engineer-jargon` skill whose entire job is
+interpreting mangled pro-audio/recording terminology (console terms, RF/
+wireless, system tech, studio, broadcast, gear procurement) — it's more
+thorough than anything caveman needs to duplicate, and it's on by default.
+When cleaning a dictation from this domain, let it own term-level
+disambiguation; caveman's job stays the mechanical layer (filler, false
+starts, stutters, meta-comments). Don't maintain a second, competing guess
+about what a garbled term means — two independent "corrections" of the same
+word are how you end up with a confident wrong answer that looks doubly
+verified. If `audio-engineer-jargon` isn't available for some reason, fall
+back to this skill's own judgment and flag rather than guess, same as
+always.
