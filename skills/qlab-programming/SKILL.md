@@ -32,14 +32,15 @@ For deep syntax reference, read the relevant file in `references/` rather than g
 
 ## A critical caveat: verify exact syntax before it ships to a real show
 
-The reference docs in this skill were assembled from Figure 53's official documentation and community repos, but the exact spelling of OSC addresses and AppleScript command/property names can shift subtly between QLab versions, and this skill's author could not always fetch the live doc pages firsthand while writing it. Treat the reference files as **strongly-informed drafts, not gospel**:
+The **AppleScript** reference (`references/applescript-dictionary.md`) is sourced from real, production-tested scripts pulled directly from two MIT-licensed community repos (`samschloegel/qlab-scripts`, `bsmith96/qlab-scripts`) — property names, command names, and the QLab 4 vs. 5 deltas documented there were confirmed against actual working code, not reconstructed from memory. Trust it, but it's not exhaustive; fall back to the official dictionary for anything it doesn't cover.
+
+The **OSC** reference (`references/osc-dictionary.md`) is weaker: it was assembled from Figure 53's documentation via search-result snippets, because `qlab.app` is network-egress-blocked in the environment this skill was built in and could not be fetched directly. Treat its exact address spellings as a **strongly-informed draft, not gospel**:
 
 - Before handing a script to the user for a real show, especially anything destructive (batch edits, renumbering, deleting) — tell them to test it against a scratch/copy workspace first, not their live show file.
-- If precision matters and you have live web access in this session, cross-check against the official docs before finalizing:
-  - `https://qlab.app/docs/v5/scripting/osc-dictionary-v5/`
-  - `https://qlab.app/docs/v5/scripting/applescript-dictionary-v5/`
-  - (swap `v5` for `v4`/`v3` for older shows)
-- If you can't reach the web, say so plainly rather than presenting unverified syntax as certain — this is a live-show tool, and a wrong cue number or a silently-failed AppleScript mid-performance is a real production problem, not just a bug.
+- If you have live web access in this session and precision matters, cross-check the OSC dictionary against the official docs before finalizing:
+  - `https://qlab.app/docs/v5/scripting/osc-dictionary-v5/` (swap `v5` for `v4`/`v3` for older shows)
+- If you can't reach the web, say so plainly rather than presenting unverified OSC syntax as certain — this is a live-show tool, and a wrong cue number or a silently-failed script mid-performance is a real production problem, not just a bug.
+- Community source repos (GitHub) are generally NOT egress-blocked even when `qlab.app` is — if you hit the same block, try `add_repo`/cloning a relevant repo directly rather than assuming all web access is unavailable.
 
 ## Quick-start patterns
 
